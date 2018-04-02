@@ -29,9 +29,8 @@ export default class MoreInformation extends React.Component{
     constructor(props){
         super(props);
         console.log('Props in Item details', props);
-        let navigationParams =  this.props.navigation.state.params;
         this.state = {
-          item: this.props.item || navigationParams.item
+          item: this.props.item || {}
         };
     }
 

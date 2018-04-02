@@ -26,7 +26,7 @@ let dataSource: [
 ]
 
 
-class StartTutorial extends Reac.Component{
+export default class StartTutorial extends React.Component{
     constructor(props){
         super(props);
         this.state = {

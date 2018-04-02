@@ -6,4 +6,4 @@
 import { AppRegistry } from 'react-native';
 import AppNavigation from './AppNavigation';
 
-AppRegistry.registerComponent('appDemo', () => AppNavigation);
+AppRegistry.registerComponent('MobileAppDemo', () => AppNavigation);

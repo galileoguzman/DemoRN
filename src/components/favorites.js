@@ -25,8 +25,8 @@ export default class Favorites extends React.Component{
 
     constructor(props){
         super(props);
-        let navigationParams =  this.props.navigation.state.params;
-        let user = navigationParams.user || defaultUser;
+        let screenProps =  this.props.screenProps || {};
+        let user = screenProps.user;
         this.state = {
           user
         };

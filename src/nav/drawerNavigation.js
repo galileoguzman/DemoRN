@@ -38,6 +38,9 @@ const styles = StyleSheet.create({
         borderBottomWidth: 2,
         borderBottomColor: '#d8d8d8'
     },
+    authLogo: {
+        height: 100
+    },
     secondaryOptions: {
         marginTop: 30,
         paddingVertical: 15,
@@ -74,7 +77,7 @@ const doTermsAndConditions =  function() {
 const customDrawerContentComponent = (props) => (
   <View style={styles.drawerContent}>
     <View style={styles.imageContainer}>
-        <Image source={require('../assets/logoMedium.png')} style={styles.authLogo}/>
+        <Image source={require('../assets/React-icon.svg.png')} resizeMode='cover' style={styles.authLogo}/>
     </View>
     <View style={styles.itemContainer} >
         <DrawerItems {...props} />
@@ -92,7 +95,7 @@ const customDrawerContentComponent = (props) => (
 
 const drawerNavigatorConfig = {
   contentComponent: customDrawerContentComponent,
-  initialRouteName: 'CategoryScreen',
+  initialRouteName: 'Home',
   drawerOpenRoute: 'DrawerOpen',
   drawerCloseRoute: 'DrawerClose',
   drawerToggleRoute: 'DrawerToggle',

@@ -8,8 +8,10 @@
     "android-linux": "react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res && react-native run-android"
   },
   "dependencies": {
+    "prop-types": "^15.6.1",
     "react": "16.0.0",
     "react-native": "0.51.0",
+    "react-native-slideshow": "^1.0.1",
     "react-native-vector-icons": "^4.4.3",
     "react-navigation": "^1.0.0-beta.22"
   },

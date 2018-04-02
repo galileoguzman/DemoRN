@@ -22,7 +22,7 @@ export default class Header extends React.Component{
         };
     }
 
-    componentWillReceiveProps({nextProps}){
+    componentWillReceiveProps(nextProps){
       this.showMenuButton =  nextProps.menuButton || false;
       this.showBackButton =  nextProps.backButton || false;
       this.stylesForHeader =  nextProps.headerStyle || {};
