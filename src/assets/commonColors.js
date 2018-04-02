@@ -1,6 +1,7 @@
 const colors = {
-  primaryColor: "#d9d9d9",
-  primaryDarkColor: 'blue',
+  primaryColor: "#4267b2",
+  primaryDarkColor: '#244890',
+  headerButtonsColor: '#081f4c',
   accentColor: "#fff",
   textColor: '#000',
   placeholderColor:  '#9b9b9b',

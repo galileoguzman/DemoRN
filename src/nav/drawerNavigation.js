@@ -23,7 +23,7 @@ import commonColors from '../assets/commonColors';
 const styles = StyleSheet.create({
     drawerContent: {
         flex: 1,
-        backgroundColor: 'white'
+        backgroundColor: commonColors.primaryColor,
     },
 
     imageContainer: {
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
         paddingTop: 15,
         paddingBottom: 10,
         borderBottomWidth: 2,
-        borderBottomColor: '#d8d8d8'
+        borderBottomColor: commonColors.borderColor
     },
     authLogo: {
         height: 100
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
         marginTop: 30,
         paddingVertical: 15,
         borderTopWidth: 1,
-        borderTopColor: "#d8d8d8"
+        borderTopColor: commonColors.borderColor
     },
     menuItemText: {
         margin:0,
