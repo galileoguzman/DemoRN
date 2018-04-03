@@ -38,8 +38,9 @@ const styles = StyleSheet.create({
         borderBottomWidth: 2,
         borderBottomColor: commonColors.borderColor
     },
-    authLogo: {
-        height: 100
+    drawerLogo: {
+        height: 100,
+        width: 100
     },
     secondaryOptions: {
         marginTop: 30,
@@ -77,7 +78,7 @@ const doTermsAndConditions =  function() {
 const customDrawerContentComponent = (props) => (
   <View style={styles.drawerContent}>
     <View style={styles.imageContainer}>
-        <Image source={require('../assets/React-icon.svg.png')} resizeMode='cover' style={styles.authLogo}/>
+        <Image source={require('../assets/React-icon.svg.png')} resizeMode='cover' style={styles.drawerLogo}/>
     </View>
     <View style={styles.itemContainer} >
         <DrawerItems {...props} />
