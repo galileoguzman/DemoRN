@@ -16,11 +16,9 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import commonColors from '../assets/commonColors';
 import commonStyles from '../assets/commonStyles';
 
-import Header from '../nav/header';
-
 export default class MoreInformation extends React.Component{
   static navigationOptions =({navigation}) => {
-    let title =  navigation.state.params.item.title;
+
     return {
       headerTitle: 'More Information'
     }
@@ -29,6 +27,7 @@ export default class MoreInformation extends React.Component{
     constructor(props){
         super(props);
         console.log('Props in Item details', props);
+
         this.state = {
           item: this.props.item || {}
         };
@@ -39,7 +38,6 @@ export default class MoreInformation extends React.Component{
       let navigationOptions = this.constructor.navigationOptions(this.props);
       return (
         <View style={commonStyles.container}>
-          <Header backButton={true} title={navigationOptions.headerTitle} navigation={this.props.navigation}  />
           <Text>More info screen</Text>
           <Text>{item.description}</Text>
         </View>
