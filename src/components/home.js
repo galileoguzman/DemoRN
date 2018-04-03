@@ -20,6 +20,7 @@ import commonStyles from '../assets/commonStyles';
 
 import Header from '../nav/header';
 import MoreInformation from './moreInformation';
+import Details from './details';
 import StartTutorial from './startTutorial';
 let defaultUser = {
   email: 'some@email.com',
@@ -76,7 +77,7 @@ class Home extends React.Component{
       return(
         <TouchableOpacity
             style={styles.itemContainer}
-          onPress={() => this.props.navigation.navigate('moreInformation', { item: item })}>
+          onPress={() => this.props.navigation.navigate('details', { item: item })}>
           <Image source={require('../assets/any2.jpg')} resizeMode='cover' style={{ width: 150}}/>
             <View style={styles.overlayCaptions}>
               <Text style={{ color: commonColors.accentColor, fontWeight: 'bold' }} >{item.title}</Text>
@@ -91,7 +92,7 @@ class Home extends React.Component{
       return(
         <TouchableOpacity
             style={styles.itemContainer}
-          onPress={() => this.props.navigation.navigate('moreInformation', { item: item })}>
+          onPress={() => this.props.navigation.navigate('details', { item: item })}>
             <Image source={require('../assets/any.jpg')} resizeMode='cover' style={{ width: 150}}/>
         </TouchableOpacity>
 
@@ -135,7 +136,8 @@ class Home extends React.Component{
 const HomeStack = StackNavigator({
   home: { screen: Home},
   tutorial: { screen: StartTutorial},
-  moreInformation: { screen: MoreInformation }
+  moreInformation: { screen: MoreInformation },
+  details: { screen: Details}
 }, {
   initialRouteName: 'home',
   title: 'Home',
