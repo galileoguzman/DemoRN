@@ -9,6 +9,8 @@ import {
 import commonColors from '../assets/commonColors';
 import commonStyles from '../assets/commonStyles';
 
+import { getUserTutorialRead, setUserReadTutorial } from '../helpers/asyncStorageUtilities';
+
 let defaultUser = {
   id: 123456789,
   email: 'some@email.com',
@@ -24,13 +26,19 @@ export default class LoginScreen extends React.Component{
     tryLogin = (params) => {
       if(true){
           let tutorialRead =  false;
-          if(tutorialRead){
-              this.props.navigation.navigate('drawerStack', { user: defaultUser });
-          }
-          else{
-               this.props.navigation.navigate('tutorial', { user: defaultUser });
-          }
-          return
+          let info  = getUserTutorialRead();
+          info.then((result) => {
+              tutorialRead =  result;
+              if(tutorialRead){
+                  this.props.navigation.navigate('drawerStack', { user: defaultUser });
+              }
+              else{
+                   this.props.navigation.navigate('tutorial', { user: defaultUser });
+              }
+              return true;
+          })
+          return ;
+
       }
       return false;
     }

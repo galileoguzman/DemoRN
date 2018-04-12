@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import Slideshow from 'react-native-slideshow';
 import commonColors from '../assets/commonColors';
+import { getUserTutorialRead, setUserReadTutorial } from '../helpers/asyncStorageUtilities';
 
 const dataSource = [
   {
@@ -40,6 +41,11 @@ export default class StartTutorial extends React.Component{
         }
     }
 
+    completeTutorial = () => {
+        setUserReadTutorial(this.state.user);
+        this.props.navigation.navigate('drawerStack', { user: this.state.user })
+    }
+
     render(){
         return(
             <View style={{flex: 1}}>
@@ -57,7 +63,7 @@ export default class StartTutorial extends React.Component{
                      <View style={styles.gotItButtonContainer}>
                      {
                          this.state.position == (this.state.dataSource.length - 1) &&
-                     <TouchableOpacity style={styles.gotItButton} onPress={() => this.props.navigation.navigate('drawerStack', { user: this.state.user })} >
+                     <TouchableOpacity style={styles.gotItButton} onPress={this.completeTutorial} >
                          <Text style={{color: commonColors.accentColor }}>Got it!</Text>
                      </TouchableOpacity>
                      }
