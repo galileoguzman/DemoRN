@@ -36,10 +36,29 @@ export default class StartTutorial extends React.Component{
         let user = navigationParams.user || {};
         this.state = {
             user: user,
-            dataSource: dataSource,
+            dataSource: undefined,
             position: 0
         }
+        let tutorialRead =  false;
+        let info  = getUserTutorialRead();
+        info.then((result) => {
+            tutorialRead =  result;
+            if(tutorialRead){
+                this.props.navigation.navigate('drawerStack', { user: user });
+            }
+            return true;
+        })
+
+
     }
+
+    componentDidMount(){
+        setInterval(()=>{
+            this.setState({dataSource: dataSource})
+        }
+            , 500);
+    }
+
 
     completeTutorial = () => {
         setUserReadTutorial(this.state.user);
@@ -48,26 +67,32 @@ export default class StartTutorial extends React.Component{
 
     render(){
         return(
-            <View style={{flex: 1}}>
-                <Slideshow
-                        dataSource={this.state.dataSource}
-                        position={this.state.position}
-                        onPositionChanged={position => this.setState({ position })}
-                        containerStyle={{flex: 1}}
-                        height={'100%'}
-                        indicatorColor={commonColors.accentColor}
-                        indicatorSelectedColor={commonColors.alertColor}
-                        scrollEnabled={false}
-                        arrowSize={20}
-                         />
-                     <View style={styles.gotItButtonContainer}>
-                     {
-                         this.state.position == (this.state.dataSource.length - 1) &&
-                     <TouchableOpacity style={styles.gotItButton} onPress={this.completeTutorial} >
-                         <Text style={{color: commonColors.accentColor }}>Got it!</Text>
-                     </TouchableOpacity>
-                     }
-                 </View>
+            <View style={{flex: 1, backgroundColor: commonColors.primaryColor}}>
+                {
+                    this.state.dataSource &&
+                    <View style={{flex: 1, backgroundColor: 'transparent'}}>
+                        <Slideshow
+                            dataSource={this.state.dataSource}
+                            position={this.state.position}
+                            onPositionChanged={position => this.setState({ position })}
+                            containerStyle={{flex: 1}}
+                            height={'100%'}
+                            indicatorColor={commonColors.accentColor}
+                            indicatorSelectedColor={commonColors.alertColor}
+                            scrollEnabled={false}
+                            arrowSize={20}
+                            />
+                        <View style={styles.gotItButtonContainer}>
+                            {
+                                this.state.position == (this.state.dataSource.length - 1) &&
+                                <TouchableOpacity style={styles.gotItButton} onPress={this.completeTutorial} >
+                                    <Text style={{color: commonColors.accentColor }}>Got it!</Text>
+                                </TouchableOpacity>
+                            }
+                        </View>
+                    </View>
+                }
+
             </View>
         );
     }

@@ -12,7 +12,7 @@ const PrimaryNav = StackNavigator({
   // Default config for all screens
   headerMode: 'none',
   title: 'MobileAppDemo',
-  initialRouteName: 'loginStack'
+  initialRouteName: 'tutorial'
 });
 
 export default PrimaryNav;
