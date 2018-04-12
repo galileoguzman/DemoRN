@@ -31,7 +31,8 @@ const items = [
   {key: 11, title: 'Title 8', description: 'Some kind of info here', url: 'http://placeimg.com/640/480/any'},
   {key: 12, title: 'Title 8', description: 'Some kind of info here', url: 'http://placeimg.com/640/480/any'},
   {key: 13, title: 'Title 8', description: 'Some kind of info here', url: 'http://placeimg.com/640/480/any'},
-  {key: 14, title: 'Title 8', description: 'Some kind of info here', url: 'http://placeimg.com/640/480/any'}
+  {key: 14 },
+  {key: 15 },
 ]
 
 export default class MoreInformation extends React.Component{
@@ -44,7 +45,6 @@ export default class MoreInformation extends React.Component{
 
     constructor(props){
         super(props);
-        console.log('Props in Item details', props);
 
         this.state = {
           items: items
@@ -54,7 +54,11 @@ export default class MoreInformation extends React.Component{
     _renderItemForGrid = ({item}) => {
         return(
             <View style={styles.itemInGrid}>
-                <Text> {item.description}</Text>
+                {item.title && <Image source={require('../assets/any2.jpg')} resizeMode='cover' style={{height: 200, width: 200}} /> }
+                <View style={styles.overlayCaptions}>
+                    <Text style={{ color: commonColors.accentColor, fontWeight: 'bold' }} >{item.title}</Text>
+                    <Text style={{ color: commonColors.accentColor }}>{item.description}</Text>
+                </View>
             </View>
         )
     }
@@ -66,7 +70,7 @@ export default class MoreInformation extends React.Component{
         <View style={commonStyles.container}>
             <FlatList  keyExtractor={(item) => item.key}
             data={this.state.items} renderItem={this._renderItemForGrid}
-            horizontal={false}
+            horizontal={false} numColumns={3}
             style={styles.gridStyle}  contentContainerStyle={styles.gridContent}  />
         </View>
     )
@@ -87,7 +91,6 @@ const styles = StyleSheet.create({
   },
   gridContent: {
       alignItems: 'flex-end',
-      justifyContent: 'center',
       flexDirection: 'row',
       flexWrap: 'wrap'
   },
@@ -97,8 +100,17 @@ const styles = StyleSheet.create({
       borderStyle: 'solid',
       borderRadius: 4,
       margin: 4,
-      padding: 2,
-      height: 140,
-      width: 120
-  }
+      height: 200,
+      width: '30%'
+  },
+  overlayCaptions: {
+      backgroundColor: commonColors.placeholderColor,
+      opacity: 0.5,
+      position: 'absolute',
+      bottom: 0,
+      left: 0,
+      paddingHorizontal: 5,
+      width: '100%'
+
+   }
 });
