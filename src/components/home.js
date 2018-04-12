@@ -21,13 +21,10 @@ import commonStyles from '../assets/commonStyles';
 
 import Tabs from './tabs';
 import Details from './details';
-import StartTutorial from './startTutorial';
-
 
 // MainView stack
 const HomeStack = StackNavigator({
   home: {screen: Tabs},
-  tutorial: { screen: StartTutorial},
   details: { screen: Details}
 }, {
   initialRouteName: 'home',

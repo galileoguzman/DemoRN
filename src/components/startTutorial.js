@@ -8,8 +8,9 @@ import {
   View
 } from 'react-native';
 import Slideshow from 'react-native-slideshow';
+import commonColors from '../assets/commonColors';
 
-let dataSource: [
+const dataSource = [
   {
     title: 'Title 1',
     caption: 'Caption 1',
@@ -29,31 +30,57 @@ let dataSource: [
 export default class StartTutorial extends React.Component{
     constructor(props){
         super(props);
+        let navigationParams =  this.props.navigation.state.params || {};
+
+        let user = navigationParams.user || {};
         this.state = {
-          dataSource: dataSource,
-          position: 1
-        };
+            user: user,
+            dataSource: dataSource,
+            position: 0
+        }
     }
 
     render(){
         return(
-            <View>
-                <View>
-                    <Slideshow
-                            dataSource={this.state.dataSource}
-                            position={this.state.position}
-                            onPositionChanged={position => this.setState({ position })} />
-                </View>
-                <View>
-                    {
-                        this.state.position == this.state.dataSource.length &&
-                    <TouchableHighlight onPress={() => this.props.navigation.navigate('home')} >
-                        <Text>Got it!</Text>
-                    </TouchableHighlight>
-                    }
-                </View>
+            <View style={{flex: 1}}>
+                <Slideshow
+                        dataSource={this.state.dataSource}
+                        position={this.state.position}
+                        onPositionChanged={position => this.setState({ position })}
+                        containerStyle={{flex: 1}}
+                        height={'100%'}
+                        indicatorColor={commonColors.accentColor}
+                        indicatorSelectedColor={commonColors.alertColor}
+                        scrollEnabled={false}
+                        arrowSize={20}
+                         />
+                     <View style={styles.gotItButtonContainer}>
+                     {
+                         this.state.position == (this.state.dataSource.length - 1) &&
+                     <TouchableOpacity style={styles.gotItButton} onPress={() => this.props.navigation.navigate('drawerStack', { user: this.state.user })} >
+                         <Text style={{color: commonColors.accentColor }}>Got it!</Text>
+                     </TouchableOpacity>
+                     }
+                 </View>
             </View>
         );
     }
 
 }
+
+
+
+const styles = StyleSheet.create({
+    gotItButtonContainer: {
+        backgroundColor: commonColors.alertColor,
+        position: 'absolute',
+        bottom: 20,
+        right: 20,
+        paddingHorizontal: 10,
+        borderRadius: 5
+    },
+    gotItButton: {
+        paddingVertical: 10,
+        paddingHorizontal: 15
+    }
+});

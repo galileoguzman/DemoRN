@@ -29,9 +29,9 @@ export default class Tabs extends PureComponent {
     constructor(props){
         super(props);
         this.drawerNavigation =  this.props.navigation;
-        let screenProps =  this.props.screenProps || {};
+        let navigationParams =  this.props.navigation.state.params || {};
 
-        let user = screenProps.user || defaultUser;
+        let user = navigationParams.user || {};
         this.state = {
             user: user,
             index: 0,

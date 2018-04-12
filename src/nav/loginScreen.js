@@ -10,6 +10,7 @@ import commonColors from '../assets/commonColors';
 import commonStyles from '../assets/commonStyles';
 
 let defaultUser = {
+  id: 123456789,
   email: 'some@email.com',
   fullname: 'Sandra Williams'
 }
@@ -22,7 +23,14 @@ export default class LoginScreen extends React.Component{
     }
     tryLogin = (params) => {
       if(true){
-        return this.props.navigation.navigate('drawerStack', { user: defaultUser });
+          let tutorialRead =  false;
+          if(tutorialRead){
+              this.props.navigation.navigate('drawerStack', { user: defaultUser });
+          }
+          else{
+               this.props.navigation.navigate('tutorial', { user: defaultUser });
+          }
+          return
       }
       return false;
     }

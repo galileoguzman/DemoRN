@@ -28,7 +28,6 @@ export default class Details extends React.Component{
 
     constructor(props){
         super(props);
-        console.log('Props in Item details', props);
         let item  = this.props.navigation.state.params.item || {};
         this.state = {
           item: item

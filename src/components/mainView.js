@@ -20,7 +20,7 @@ import commonStyles from '../assets/commonStyles';
 
 import Header from '../nav/header';
 import Details from './details';
-import StartTutorial from './startTutorial';
+
 
 const items = [
   {key: 1, title: 'Title 1', description: 'Some kind of info here', url: 'http://placeimg.com/640/480/any'},
@@ -55,7 +55,6 @@ class MainView extends React.Component{
     }
     constructor(props){
         super(props);
-        console.log('props in MainView ', props)
         //let navigationParams =  this.props.navigation.state.params || {};
         //let user = navigationParams.user || defaultUser;
 
@@ -64,7 +63,7 @@ class MainView extends React.Component{
           user,
           items,
           dataSource: dataSource,
-          position: 1
+          position: 0
         };
     }
 
